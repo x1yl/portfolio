@@ -89,7 +89,3 @@ export function ContactForm() {
     </form>
   );
 }
-
-function App() {
-  return <ContactForm />;
-}
