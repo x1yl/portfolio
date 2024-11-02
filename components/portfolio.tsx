@@ -198,18 +198,17 @@ export function Portfolio() {
             </h2>
             <div className="max-w-3xl mx-auto space-y-4">
               <p className="text-gray-500 dark:text-gray-400">
-                I'm Kevin Zheng, a dedicated full-stack developer with a strong
-                foundation in computer science and 5 years of hands-on
-                experience in the tech industry. My expertise spans across
-                modern web technologies, with a particular focus on React,
-                Node.js, and emerging fields like blockchain and AI.
+                👋 Hi! I'm Kevin Zheng, a 15-year-old from Brooklyn, NY, with a
+                passion for software development. I've been diving into coding,
+                learning to build interactive web applications and explore
+                different technologies.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                I thrive on challenges that push the boundaries of what's
-                possible in software development. Whether it's creating
-                intuitive user interfaces or architecting scalable backend
-                systems, I'm committed to delivering high-quality solutions that
-                make a real impact.
+                So far, I've gotten hands-on experience with React, TypeScript,
+                Python, MySQL, Next.js, and Tailwind CSS. I love problem-solving
+                and finding creative ways to bring ideas to life through code.
+                I'm constantly learning and experimenting with new tools and
+                frameworks to grow my skills.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
                 Outside of coding, I'm an avid tech enthusiast who enjoys
