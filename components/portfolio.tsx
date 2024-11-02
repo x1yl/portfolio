@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Card,
   CardContent,
@@ -89,7 +90,14 @@ export function Portfolio() {
               </div>
               <div className="space-x-4">
                 <Link href="#contact">
-                  <Button className="bg-blue-500 hover:bg-blue-600 text-white transition-colors duration-300">
+                  <Button
+                    className={cn(
+                      "bg-blue-700 hover:bg-blue-800 text-white", // Light mode (contrast ratio > 4.5:1)
+                      "dark:bg-blue-600 dark:hover:bg-blue-700", // Dark mode (contrast ratio > 4.5:1)
+                      "transition-colors duration-300"
+                    )}
+                  >
+                    {" "}
                     Contact Me
                   </Button>
                 </Link>
