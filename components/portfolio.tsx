@@ -70,10 +70,10 @@ export function Portfolio() {
           )}
         </Button>
       </header>
-      <main className="flex-1">
+      <main className="flex flex-col min-h-screen">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
+          <div className="container mx-auto px-4 md:px-6 max-w-[1200px]">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
                   Kevin Zheng
@@ -82,7 +82,7 @@ export function Portfolio() {
                   <MapPin className="h-4 w-4" />
                   <span className="text-sm">Brooklyn, NY • 15 yrs old</span>
                 </div>
-                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400 mt-4">
+                <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
                   Backend intusisast, knowledgable in Typescript, Python, React
                   and Next.js. Crafting innovative solutions to complex
                   challenges.
@@ -117,11 +117,11 @@ export function Portfolio() {
           id="projects"
           className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-900 transition-colors duration-500"
         >
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6 max-w-[1200px]">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
               Projects
-            </h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            </h2> 
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
               <Link href="https://github.com/x1yl" className="group">
                 <Card className="group hover:shadow-lg transition-shadow duration-300">
                   <CardHeader>
@@ -192,30 +192,32 @@ export function Portfolio() {
           id="about"
           className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800 transition-colors duration-500"
         >
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-              About Me
-            </h2>
-            <div className="max-w-3xl mx-auto space-y-4">
-              <p className="text-gray-500 dark:text-gray-400">
-                👋 Hi! I'm Kevin Zheng, a 15-year-old from Brooklyn, NY, with a
-                passion for software development. I've been diving into coding,
-                learning to build interactive web applications and explore
-                different technologies.
-              </p>
-              <p className="text-gray-500 dark:text-gray-400">
-                So far, I've gotten hands-on experience with React, TypeScript,
-                Python, MySQL, Next.js, and Tailwind CSS. I love problem-solving
-                and finding creative ways to bring ideas to life through code.
-                I'm constantly learning and experimenting with new tools and
-                frameworks to grow my skills.
-              </p>
-              <p className="text-gray-500 dark:text-gray-400">
-                Outside of coding, I'm an avid tech enthusiast who enjoys
-                staying up-to-date with the latest industry trends. I also love
-                participating in hackathons and contributing to open-source
-                projects in my free time.
-              </p>
+          <div className="container mx-auto px-4 md:px-6 max-w-[1200px]">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                About Me
+              </h2>
+              <div className="max-w-3xl mx-auto space-y-4">
+                <p className="text-gray-500 dark:text-gray-400">
+                  👋 Hi! I'm Kevin Zheng, a 15-year-old from Brooklyn, NY, with
+                  a passion for software development. I've been diving into
+                  coding, learning to build interactive web applications and
+                  explore different technologies.
+                </p>
+                <p className="text-gray-500 dark:text-gray-400">
+                  So far, I've gotten hands-on experience with React,
+                  TypeScript, Python, MySQL, Next.js, and Tailwind CSS. I love
+                  problem-solving and finding creative ways to bring ideas to
+                  life through code. I'm constantly learning and experimenting
+                  with new tools and frameworks to grow my skills.
+                </p>
+                <p className="text-gray-500 dark:text-gray-400">
+                  Outside of coding, I'm an avid tech enthusiast who enjoys
+                  staying up-to-date with the latest industry trends. I also
+                  love participating in hackathons and contributing to
+                  open-source projects in my free time.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -223,12 +225,14 @@ export function Portfolio() {
           id="contact"
           className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-900 transition-colors duration-500"
         >
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-              Get In Touch
-            </h2>
+          <div className="container mx-auto px-4 md:px-6 max-w-[1200px]">
             <div className="max-w-md mx-auto">
-              <ContactForm />
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                Get In Touch
+              </h2>
+              <div className="max-w-md mx-auto">
+                <ContactForm />
+              </div>
             </div>
             <div className="flex justify-center space-x-4 mt-8">
               <Link
