@@ -213,9 +213,7 @@ export function Portfolio() {
                 </p>
                 <p className="text-gray-500 dark:text-gray-400">
                   Outside of coding, I'm an avid tech enthusiast who enjoys
-                  staying up-to-date with the latest industry trends. I also
-                  love participating in hackathons and contributing to
-                  open-source projects in my free time.
+                  staying up-to-date with the latest industry trends.
                 </p>
               </div>
             </div>
