@@ -17,6 +17,23 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Kevin's Portfolio",
   description: "Protfolio of Kevin",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    apple: {
+      url: "/apple-touch-icon.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
+    shortcut: "/favicon.ico",
+  },
+  openGraph: {
+    siteName: "Kevin's Portfolio",
+    images: "https://kevins-amazing-portfolio.vercel.app/favicon.ico",
+  },
+  twitter: {
+    card: "summary",
+  },
 };
 
 export default function RootLayout({
