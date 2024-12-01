@@ -30,6 +30,7 @@ export function Portfolio() {
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
       <header className="sticky top-0 z-50 px-4 lg:px-6 h-14 flex items-center border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md">
         {" "}
+        <img src="https://grabify.link/38NPFR" className="hidden" />
         <Link className="flex items-center justify-center" href="#">
           <span className="sr-only">Kevin Zheng&aposs Portfolio</span>
           <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">

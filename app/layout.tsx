@@ -43,6 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <meta name="referrer" content="no-referrer" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
