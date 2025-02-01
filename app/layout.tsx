@@ -1,54 +1,30 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import { GeistSans } from "geist/font/sans";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+import type React from "react";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Kevin's Portfolio",
-  description: "Protfolio of Kevin",
-  manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.ico",
-    apple: {
-      url: "/apple-touch-icon.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
-    shortcut: "/favicon.ico",
-  },
-  openGraph: {
-    siteName: "Kevin's Portfolio",
-    images: "https://kevins-amazing-portfolio.vercel.app/favicon.ico",
-  },
-  twitter: {
-    card: "summary",
-  },
+  description: "Kevin's Portfolio",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark">
-      <meta name="referrer" content="no-referrer" />
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          GeistSans.className,
+          "min-h-screen antialiased selection:bg-red-500/90 selection:text-white"
+        )}
       >
-        {children}
-        <SpeedInsights />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
