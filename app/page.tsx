@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import {
   EnvelopeClosedIcon,
-  RocketIcon,
   ChevronDownIcon,
 } from "@radix-ui/react-icons";
 
