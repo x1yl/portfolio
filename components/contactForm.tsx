@@ -8,7 +8,7 @@ import { Send } from "lucide-react";
 import React, { useState } from "react";
 
 export function ContactForm() {
-  const formId = process.env.NEXT_PUBLIC_FORM || "defaultFormId"; // Provide a default value
+  const formId = process.env.NEXT_PUBLIC_FORM || "defaultFormId"; 
   const [state, handleSubmit] = useForm(formId);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -24,16 +24,30 @@ export function ContactForm() {
   };
 
   if (state.succeeded) {
-    return <p>Thanks for reaching out!</p>;
+    return <p className="text-[1.2vw] text-blue-400">Thanks for reaching out!</p>;
   }
 
+  const inputStyles = {
+    fontSize: '1.1vw',
+    padding: '0.75vw',
+    borderRadius: '0.375vw',
+    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+    border: '1px solid rgba(59, 130, 246, 0.2)',
+    width: '35vw', 
+    transition: 'all 0.2s ease-in-out',
+  };
+
+  const labelStyles = {
+    fontSize: '1.1vw',
+    marginBottom: '0.5vw',
+    display: 'block',
+    color: 'rgb(191, 219, 254)',
+  };
+
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <div className="space-y-2">
-        <label
-          htmlFor="name"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
+    <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
+      <div>
+        <label htmlFor="name" style={labelStyles}>
           Name
         </label>
         <Input
@@ -44,14 +58,12 @@ export function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          style={inputStyles}
         />
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="email"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
+      <div>
+        <label htmlFor="email" style={labelStyles}>
           Email
         </label>
         <Input
@@ -62,15 +74,18 @@ export function ContactForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          style={inputStyles}
         />
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
+        <ValidationError 
+          prefix="Email" 
+          field="email" 
+          errors={state.errors}
+          style={{ fontSize: '1vw', color: 'rgb(239, 68, 68)' }}
+        />
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="message"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
+      <div>
+        <label htmlFor="message" style={labelStyles}>
           Message
         </label>
         <Textarea
@@ -79,11 +94,36 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
+          style={{
+            ...inputStyles,
+            height: '8vw',
+            resize: 'none',
+          }}
+        />
+        <ValidationError 
+          prefix="Message" 
+          field="message" 
+          errors={state.errors}
+          style={{ fontSize: '1vw', color: 'rgb(239, 68, 68)' }}
         />
       </div>
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <Button type="submit" disabled={state.submitting} className="w-full">
-        <Send className="w-4 h-4 mr-2" />
+
+      <Button
+        type="submit"
+        disabled={state.submitting}
+        style={{
+          fontSize: '1.1vw',
+          padding: '0.75vw 1.5vw',
+          borderRadius: '0.375vw',
+          background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234))',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.5vw',
+        }}
+      >
+        <Send style={{ width: '1.2vw', height: '1.2vw' }} />
         Send Message
       </Button>
     </form>
