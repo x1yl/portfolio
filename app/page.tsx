@@ -1,91 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Mail, ChevronDown } from "lucide-react";
+import { motion } from "motion/react";
+import { ChevronDown } from "lucide-react";
 import {
   SiGithub as Github,
   SiLinkedin as Linkedin,
+  SiGmail as Mail,
 } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { ContactForm } from "@/components/contactForm";
+import { ContactForm } from "@/components/ui/contactForm";
+import { Header } from "@/components/ui/header";
+import { ImageCard } from "@/components/ui/image-card";
 
 export default function Page() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const scrollToSkills = () => {
     const skillsSection = document.getElementById("skills");
     skillsSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const featuredProjects = [
+    {
+      id: 1,
+      title: "Project 1",
+      description: "A brief description of the project and technologies used.",
+      image: "/images/237-536x354.jpg",
+    },
+    // Add more projects as needed
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
-      <header
-        className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          scrollY > 50
-            ? "bg-black/90 backdrop-blur-md supports-[backdrop-filter]:bg-black/80"
-            : "bg-transparent"
-        }`}
-        style={{
-          transform: "scale(calc(0.75 + (100vw - 1280px) / 2000))",
-          transformOrigin: "top center",
-        }}
-      >
-        <div className="mx-auto w-full px-[2.25vw]">
-          <div className="flex h-[6vw] items-center justify-between">
-            <Link href="/" className="group flex items-center">
-              <div className="flex h-[2.25vw] w-[2.25vw] items-center justify-center">
-                <span className="text-[1.875vw] font-bold text-blue-400 transition-colors group-hover:text-blue-300">
-                  KZ
-                </span>
-              </div>
-            </Link>
-            <nav className="flex items-center space-x-[2.25vw]">
-              {["Home", "Profile", "Projects"].map((item) => (
-                <Link
-                  key={item}
-                  href="#"
-                  className="relative px-[0.75vw] py-[0.375vw] text-[1.275vw] font-medium text-blue-100 transition-all hover:text-blue-300"
-                >
-                  {item}
-                  <motion.span
-                    initial={{ width: 0 }}
-                    whileHover={{ width: "100%" }}
-                    className="absolute bottom-0 left-0 h-[0.15vw] bg-gradient-to-r from-blue-400 to-blue-600"
-                  />
-                </Link>
-              ))}
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  size="default"
-                  className="ml-[0.75vw] rounded-[0.375vw] bg-gradient-to-r from-blue-500 to-purple-600 px-[1.875vw] py-[0.75vw] text-[1.275vw] font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-purple-700 h-auto flex items-center gap-[0.6vw]"
-                >
-                  <Mail
-                    style={{
-                      width: "1.275vw",
-                      height: "1.275vw",
-                      minWidth: "1.275vw",
-                      minHeight: "1.275vw",
-                    }}
-                  />
-                  Contact
-                </Button>
-              </motion.div>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1">
         <section className="relative flex min-h-screen w-full items-center justify-center bg-black">
@@ -197,38 +143,31 @@ export default function Page() {
             >
               <h2 className="text-[2.5vw] font-bold">Featured Projects</h2>
               <div className="grid grid-cols-1 gap-[2vw] sm:grid-cols-2 xl:grid-cols-3">
-                {[1, 2, 3].map((project) => (
-                  <div
-                    key={project}
-                    className="group relative overflow-hidden rounded-[0.75vw] border bg-blue-950/30"
-                    style={{ aspectRatio: "16/15" }}
-                  >
-                    <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black to-black/20 p-[1.5vw]">
-                      <h3 className="mb-[0.5vw] text-[1.5vw] font-semibold">
-                        Project {project}
-                      </h3>
-                      <p className="mb-[1vw] text-[1vw] text-blue-200">
-                        A brief description of the project and technologies
-                        used.
-                      </p>
-                      <div className="flex gap-[1vw] opacity-0 transition-opacity group-hover:opacity-100">
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          className="text-[1vw] px-[1.5vw] py-[0.75vw] h-auto"
-                        >
-                          View Demo
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="text-[1vw] px-[1.5vw] py-[0.75vw] h-auto"
-                        >
-                          View Code
-                        </Button>
-                      </div>
+                {featuredProjects.map((project) => (
+                  <ImageCard key={project.id} image={project.image}>
+                    <h3 className="mb-[0.5vw] text-[1.5vw] font-semibold">
+                      {project.title}
+                    </h3>
+                    <p className="mb-[1vw] text-[1vw] text-blue-200">
+                      {project.description}
+                    </p>
+                    <div className="flex gap-[1vw] opacity-0 transition-opacity group-hover:opacity-100">
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        className="text-[1vw] px-[1.5vw] py-[0.75vw] h-auto"
+                      >
+                        View Demo
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="text-[1vw] px-[1.5vw] py-[0.75vw] h-auto"
+                      >
+                        View Code
+                      </Button>
                     </div>
-                  </div>
+                  </ImageCard>
                 ))}
               </div>
             </motion.div>
