@@ -32,7 +32,7 @@ export default function ProjectsPage() {
           >
             <h1 className="text-[2.5vw] font-bold">Projects</h1>
             <div className="grid grid-cols-1 gap-[2vw] sm:grid-cols-2 xl:grid-cols-3">
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <ImageCard key={project.id} image={project.image}>
                   <h3 className="mb-[0.5vw] text-[1.5vw] font-semibold">
                     {project.title}

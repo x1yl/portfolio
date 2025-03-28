@@ -29,8 +29,8 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>(
               backgroundImage: `url(${image})`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
         </>
       )}
       <div className="absolute inset-0 flex flex-col justify-end p-[1.5vw] z-10">

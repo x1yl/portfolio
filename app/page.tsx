@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 import {
   SiGithub as Github,
-  SiLinkedin as Linkedin,
   SiGmail as Mail,
 } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
@@ -47,7 +46,7 @@ export default function Page() {
           >
             <h1 className="text-[4.5vw] md:text-[3.75vw] font-bold leading-none tracking-tighter">
               <span className="block mb-[0.75vw]">Hi, I&apos;m</span>
-              <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                 Kevin Zheng
               </span>
             </h1>
@@ -89,7 +88,7 @@ export default function Page() {
         {/* Skills Section */}
         <section
           id="skills"
-          className="bg-gradient-to-b from-black to-blue-900/20 py-[10vw] min-h-[100vh]"
+          className="bg-linear-to-b from-black to-blue-900/20 py-[10vw] min-h-[100vh]"
         >
           <div className="mx-auto w-[90vw]">
             <motion.div
@@ -175,7 +174,7 @@ export default function Page() {
         </section>
 
         {/* Contact Section */}
-        <section className="bg-gradient-to-t from-black to-blue-900/20 py-[3.5vw]">
+        <section className="bg-linear-to-t from-black to-blue-900/20 py-[3.5vw]">
           <div className="mx-auto w-[85vw]">
             <motion.div
               initial={{ opacity: 0 }}
@@ -215,7 +214,7 @@ export default function Page() {
                     </Button>
                   </Link>
                   <Link
-                    href="https://www.linkedin.com/"
+                    href="https://www.linkedin.com/in/kevin-zheng-020665356/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -231,7 +230,7 @@ export default function Page() {
                         justifyContent: "center",
                       }}
                     >
-                      <Linkedin style={{ width: "2vw", height: "2vw" }} />
+                    <img src="/images/linkedin.svg" alt="Linkedin" width="45vw" height="45vh" />
                     </Button>
                   </Link>
                   <Link

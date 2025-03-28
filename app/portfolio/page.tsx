@@ -38,7 +38,7 @@ export default function PortfolioPage() {
             }}
           >
             <section className="space-y-[3vw]">
-              <h1 className="text-[3vw] font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-[3vw] font-bold bg-linear-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                 Experience
               </h1>
               <div className="space-y-[2vw]">
@@ -72,7 +72,7 @@ export default function PortfolioPage() {
             </section>
 
             <section className="space-y-[3vw]">
-              <h2 className="text-[3vw] font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              <h2 className="text-[3vw] font-bold bg-linear-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
                 Education
               </h2>
               <div className="space-y-[2vw]">

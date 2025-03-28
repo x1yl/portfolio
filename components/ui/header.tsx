@@ -19,7 +19,7 @@ export function Header() {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrollY > 50
-          ? "bg-black/90 backdrop-blur-md supports-[backdrop-filter]:bg-black/80"
+          ? "bg-black/90 backdrop-blur-md supports-backdrop-filter:bg-black/80"
           : "bg-transparent"
       }`}
       style={{
@@ -47,7 +47,7 @@ export function Header() {
                 <motion.span
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
-                  className="absolute bottom-0 left-0 h-[0.15vw] bg-gradient-to-r from-blue-400 to-blue-600"
+                  className="absolute bottom-0 left-0 h-[0.15vw] bg-linear-to-r from-blue-400 to-blue-600"
                 />
               </Link>
             ))}
@@ -58,7 +58,7 @@ export function Header() {
             >
               <Button
                 size="default"
-                className="ml-[0.75vw] rounded-[0.375vw] bg-gradient-to-r from-blue-500 to-purple-600 px-[1.875vw] py-[0.75vw] text-[1.275vw] font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-purple-700 h-auto flex items-center gap-[0.6vw]"
+                className="ml-[0.75vw] rounded-[0.375vw] bg-linear-to-r from-blue-500 to-purple-600 px-[1.875vw] py-[0.75vw] text-[1.275vw] font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-purple-700 h-auto flex items-center gap-[0.6vw]"
               >
                 <Mail
                   style={{
