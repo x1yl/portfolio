@@ -25,7 +25,6 @@ export default function Page() {
       description: "A brief description of the project and technologies used.",
       image: "/images/237-536x354.jpg",
     },
-    // Add more projects as needed
   ];
 
   return (
@@ -230,7 +229,12 @@ export default function Page() {
                         justifyContent: "center",
                       }}
                     >
-                    <img src="/images/linkedin.svg" alt="Linkedin" width="45vw" height="45vh" />
+                      <img
+                        src="/images/linkedin.svg"
+                        alt="Linkedin"
+                        width="45vw"
+                        height="45vh"
+                      />
                     </Button>
                   </Link>
                   <Link

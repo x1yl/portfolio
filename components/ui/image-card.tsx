@@ -8,7 +8,17 @@ interface ImageCardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>(
-  ({ className, children, image, aspectRatio = "16/15", hoverScale = true, ...props }, ref) => (
+  (
+    {
+      className,
+      children,
+      image,
+      aspectRatio = "16/15",
+      hoverScale = true,
+      ...props
+    },
+    ref
+  ) => (
     <div
       ref={ref}
       className={cn(
@@ -22,11 +32,16 @@ export const ImageCard = React.forwardRef<HTMLDivElement, ImageCardProps>(
         <>
           <div
             className={cn(
-              "absolute inset-0 bg-cover bg-center transition-transform duration-500",
+              "absolute inset-0 transition-transform duration-500",
               hoverScale && "group-hover:scale-110"
             )}
             style={{
               backgroundImage: `url(${image})`,
+              backgroundSize: "100% 100%",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              width: "100%",
+              height: "100%",
             }}
           />
           <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent" />

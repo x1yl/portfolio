@@ -8,7 +8,7 @@ import { Send } from "lucide-react";
 import React, { useState } from "react";
 
 export function ContactForm() {
-  const formId = process.env.NEXT_PUBLIC_FORM || "defaultFormId"; 
+  const formId = process.env.NEXT_PUBLIC_FORM || "defaultFormId";
   const [state, handleSubmit] = useForm(formId);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -24,28 +24,33 @@ export function ContactForm() {
   };
 
   if (state.succeeded) {
-    return <p className="text-[1.2vw] text-blue-400">Thanks for reaching out!</p>;
+    return (
+      <p className="text-[1.2vw] text-blue-400">Thanks for reaching out!</p>
+    );
   }
 
   const inputStyles = {
-    fontSize: '1.1vw',
-    padding: '0.75vw',
-    borderRadius: '0.375vw',
-    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-    border: '1px solid rgba(59, 130, 246, 0.2)',
-    width: '35vw', 
-    transition: 'all 0.2s ease-in-out',
+    fontSize: "1.1vw",
+    padding: "0.75vw",
+    borderRadius: "0.375vw",
+    backgroundColor: "rgba(59, 130, 246, 0.1)",
+    border: "1px solid rgba(59, 130, 246, 0.2)",
+    width: "35vw",
+    transition: "all 0.2s ease-in-out",
   };
 
   const labelStyles = {
-    fontSize: '1.1vw',
-    marginBottom: '0.5vw',
-    display: 'block',
-    color: 'rgb(191, 219, 254)',
+    fontSize: "1.1vw",
+    marginBottom: "0.5vw",
+    display: "block",
+    color: "rgb(191, 219, 254)",
   };
 
   return (
-    <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5vw' }}>
+    <form
+      onSubmit={onSubmit}
+      style={{ display: "flex", flexDirection: "column", gap: "1.5vw" }}
+    >
       <div>
         <label htmlFor="name" style={labelStyles}>
           Name
@@ -76,11 +81,11 @@ export function ContactForm() {
           required
           style={inputStyles}
         />
-        <ValidationError 
-          prefix="Email" 
-          field="email" 
+        <ValidationError
+          prefix="Email"
+          field="email"
           errors={state.errors}
-          style={{ fontSize: '1vw', color: 'rgb(239, 68, 68)' }}
+          style={{ fontSize: "1vw", color: "rgb(239, 68, 68)" }}
         />
       </div>
 
@@ -96,15 +101,15 @@ export function ContactForm() {
           required
           style={{
             ...inputStyles,
-            height: '8vw',
-            resize: 'none',
+            height: "8vw",
+            resize: "none",
           }}
         />
-        <ValidationError 
-          prefix="Message" 
-          field="message" 
+        <ValidationError
+          prefix="Message"
+          field="message"
           errors={state.errors}
-          style={{ fontSize: '1vw', color: 'rgb(239, 68, 68)' }}
+          style={{ fontSize: "1vw", color: "rgb(239, 68, 68)" }}
         />
       </div>
 
@@ -112,18 +117,19 @@ export function ContactForm() {
         type="submit"
         disabled={state.submitting}
         style={{
-          fontSize: '1.1vw',
-          padding: '0.75vw 1.5vw',
-          borderRadius: '0.375vw',
-          background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234))',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '0.5vw',
+          fontSize: "1.1vw",
+          padding: "0.75vw 1.5vw",
+          borderRadius: "0.375vw",
+          background:
+            "linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234))",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.5vw",
         }}
       >
-        <Send style={{ width: '1.2vw', height: '1.2vw' }} />
+        <Send style={{ width: "1.2vw", height: "1.2vw" }} />
         Send Message
       </Button>
     </form>

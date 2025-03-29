@@ -40,7 +40,7 @@ export function Header() {
             {["Home", "Projects", "Portfolio"].map((item) => (
               <Link
                 key={item}
-                href={`/${item === 'Home' ? '' : item.toLowerCase()}`}
+                href={`/${item === "Home" ? "" : item.toLowerCase()}`}
                 className="relative px-[0.75vw] py-[0.375vw] text-[1.275vw] font-medium text-blue-100 transition-all hover:text-blue-300"
               >
                 {item}
@@ -52,10 +52,7 @@ export function Header() {
               </Link>
             ))}
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="default"
                 className="ml-[0.75vw] rounded-[0.375vw] bg-linear-to-r from-blue-500 to-purple-600 px-[1.875vw] py-[0.75vw] text-[1.275vw] font-semibold text-white shadow-lg transition-all hover:from-blue-600 hover:to-purple-700 h-auto flex items-center gap-[0.6vw]"

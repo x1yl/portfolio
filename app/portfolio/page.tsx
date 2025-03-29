@@ -9,7 +9,8 @@ export default function PortfolioPage() {
       title: "Maintain Club Website",
       company: "BTHS Action",
       period: "2024 - Present",
-      description: "Maintain the functionality of the club website and implement new features to improve user experience. https://bthsaction.org",
+      description:
+        "Maintain the functionality of the club website and implement new features to improve user experience. https://bthsaction.org",
       skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
     },
   ];
@@ -19,7 +20,8 @@ export default function PortfolioPage() {
       degree: "Mechatronics and Robotics Engineering",
       school: "Brooklyn Technical High School",
       period: "2023 - 2027",
-      description: "Relevet coursework: AP Computer Science Principles, Design & Drawing Production, Regents Physics, and more."
+      description:
+        "Relevet coursework: AP Computer Science Principles, Design & Drawing Production, Regents Physics, and more.",
     },
   ];
 
@@ -52,10 +54,16 @@ export default function PortfolioPage() {
                   >
                     <div className="flex justify-between items-center">
                       <h2 className="text-[1.5vw] font-bold">{exp.title}</h2>
-                      <span className="text-[1vw] text-blue-300">{exp.period}</span>
+                      <span className="text-[1vw] text-blue-300">
+                        {exp.period}
+                      </span>
                     </div>
-                    <h3 className="text-[1.2vw] text-blue-400">{exp.company}</h3>
-                    <p className="text-[1.1vw] text-blue-200">{exp.description}</p>
+                    <h3 className="text-[1.2vw] text-blue-400">
+                      {exp.company}
+                    </h3>
+                    <p className="text-[1.1vw] text-blue-200">
+                      {exp.description}
+                    </p>
                     <div className="flex gap-[1vw] flex-wrap">
                       {exp.skills.map((skill) => (
                         <span
@@ -86,10 +94,14 @@ export default function PortfolioPage() {
                   >
                     <div className="flex justify-between items-center">
                       <h3 className="text-[1.5vw] font-bold">{edu.degree}</h3>
-                      <span className="text-[1vw] text-blue-300">{edu.period}</span>
+                      <span className="text-[1vw] text-blue-300">
+                        {edu.period}
+                      </span>
                     </div>
                     <h4 className="text-[1.2vw] text-blue-400">{edu.school}</h4>
-                    <p className="text-[1.1vw] text-blue-200">{edu.description}</p>
+                    <p className="text-[1.1vw] text-blue-200">
+                      {edu.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
