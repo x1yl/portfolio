@@ -1,3 +1,4 @@
+import { Repository } from "@/lib/github";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const THUMIO_TOKEN = process.env.THUMIO_TOKEN;
 
@@ -12,30 +13,24 @@ export async function GET() {
     });
 
     if (!response.ok) throw new Error("Failed to fetch repositories");
-    const repos = await response.json();
+    const repos: Repository[] = await response.json();
 
-    const processedRepos = repos
-      .filter((repo: any) => !repo.fork)
+    const processedRepos: Repository[] = repos
+      .filter((repo) => !repo.fork)
       .sort(
-        (a: any, b: any) =>
+        (a, b) =>
           new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime()
       )
-      .map((repo: any) => ({
-        id: repo.id,
-        name: repo.name,
-        description: repo.description,
-        html_url: repo.html_url,
-        homepage: repo.homepage,
-        topics: repo.topics,
-        pushed_at: repo.pushed_at,
-        language: repo.language,
+      .map((repo) => ({
+        ...repo,
         screenshot_url: repo.homepage
           ? `https://image.thum.io/get/auth/${THUMIO_TOKEN}/maxAge/24/${repo.homepage}`
           : "/images/237-536x354.jpg",
       }));
 
     return Response.json(processedRepos);
-  } catch (error) {
+  } catch (error: unknown) {
+    console.error('Repository fetch error:', error);
     return Response.json(
       { error: "Failed to fetch repositories" },
       { status: 500 }

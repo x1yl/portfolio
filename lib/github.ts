@@ -1,4 +1,4 @@
-export type Repository = {
+export interface Repository {
   id: number;
   name: string;
   description: string | null;
@@ -7,8 +7,9 @@ export type Repository = {
   topics: string[];
   pushed_at: string;
   language: string | null;
-  screenshot_url: string;
-};
+  fork: boolean;
+  screenshot_url?: string;
+}
 
 export async function fetchUserRepositories(): Promise<Repository[]> {
   const response = await fetch("/api/github");
