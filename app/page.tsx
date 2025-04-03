@@ -238,7 +238,7 @@ export default function Page() {
                     </Button>
                   </Link>
                   <Link
-                    href="mailto:contact@kevinzheng.fyi"
+                    href="mailto:kevin@kevinzheng.fyi"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
