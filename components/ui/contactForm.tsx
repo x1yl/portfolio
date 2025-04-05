@@ -1,29 +1,58 @@
-// Make sure to run npm install @formspree/react
-// For more help visit https://formspr.ee/react-help
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm, ValidationError } from "@formspree/react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import React, { useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 export function ContactForm() {
-  const formId = process.env.NEXT_PUBLIC_FORM || "defaultFormId";
-  const [state, handleSubmit] = useForm(formId);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const [token, setToken] = useState<string>("");
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleSubmit({
-      email,
-      message,
-      name,
-    });
+    if (!token) {
+      setError("Please complete the security check");
+      return;
+    }
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, message, name, subject, token }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      setSuccess(true);
+      setEmail("");
+      setMessage("");
+      setName("");
+      setSubject("");
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to send message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  if (state.succeeded) {
+  if (success) {
     return (
       <p className="text-[1.2vw] text-blue-400">Thanks for reaching out!</p>
     );
@@ -31,11 +60,11 @@ export function ContactForm() {
 
   const inputStyles = {
     fontSize: "1.1vw",
-    padding: "0.75vw",
-    borderRadius: "0.375vw",
+    padding: "1vw",
+    borderRadius: "0.5vw",
     backgroundColor: "rgba(59, 130, 246, 0.1)",
     border: "1px solid rgba(59, 130, 246, 0.2)",
-    width: "35vw",
+    width: "40vw",
     transition: "all 0.2s ease-in-out",
   };
 
@@ -49,11 +78,16 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      style={{ display: "flex", flexDirection: "column", gap: "1.5vw" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2vw",
+        width: "40vw",
+      }}
     >
       <div>
         <label htmlFor="name" style={labelStyles}>
-          Name
+          Name <span className="text-red-500">*</span>
         </label>
         <Input
           id="name"
@@ -69,7 +103,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="email" style={labelStyles}>
-          Email
+          Email <span className="text-red-500">*</span>
         </label>
         <Input
           id="email"
@@ -81,17 +115,26 @@ export function ContactForm() {
           required
           style={inputStyles}
         />
-        <ValidationError
-          prefix="Email"
-          field="email"
-          errors={state.errors}
-          style={{ fontSize: "1vw", color: "rgb(239, 68, 68)" }}
+      </div>
+
+      <div>
+        <label htmlFor="subject" style={labelStyles}>
+          Subject <span className="text-red-500">*</span>
+        </label>
+        <Input
+          id="subject"
+          type="text"
+          placeholder="Subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          required
+          style={inputStyles}
         />
       </div>
 
       <div>
         <label htmlFor="message" style={labelStyles}>
-          Message
+          Message <span className="text-red-500">*</span>
         </label>
         <Textarea
           id="message"
@@ -99,38 +142,46 @@ export function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
+          rows={5}
           style={{
             ...inputStyles,
-            height: "8vw",
-            resize: "none",
+            minHeight: "8vw",
+            resize: "vertical",
           }}
-        />
-        <ValidationError
-          prefix="Message"
-          field="message"
-          errors={state.errors}
-          style={{ fontSize: "1vw", color: "rgb(239, 68, 68)" }}
         />
       </div>
 
+      <div className="w-full flex justify-center">
+        <Turnstile
+          className="w-full"
+          siteKey={process.env.NEXT_PUBLIC_CLOUDFLARE_SITE_KEY!}
+          onSuccess={setToken}
+          options={{
+            theme: "dark",
+          }}
+        />
+      </div>
+
+      {error && <p className="text-[1vw] text-red-500">{error}</p>}
+
       <Button
         type="submit"
-        disabled={state.submitting}
+        disabled={isSubmitting}
+        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
         style={{
           fontSize: "1.1vw",
-          padding: "0.75vw 1.5vw",
-          borderRadius: "0.375vw",
-          background:
-            "linear-gradient(to right, rgb(59, 130, 246), rgb(147, 51, 234))",
+          padding: "1.25vw",
+          borderRadius: "0.5vw",
           width: "100%",
+          minHeight: "3.5vw",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "0.5vw",
+          gap: "0.75vw",
         }}
       >
         <Send style={{ width: "1.2vw", height: "1.2vw" }} />
-        Send Message
+        {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );
