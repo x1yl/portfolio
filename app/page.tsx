@@ -173,24 +173,24 @@ export default function Page() {
         </section>
 
         {/* Contact Section */}
-        <section className="bg-linear-to-t from-black to-blue-900/20 py-[3.5vw]">
+        <section className="bg-linear-to-t from-black to-blue-900/20 py-[10vw] min-h-screen">
           <div className="mx-auto w-[85vw]">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center space-y-[3vw]"
               style={{
-                transform: "scale(calc(0.75 + (100vw - 1280px) / 1500))",
+                transform: "scale(calc(0.75 + (100vw - 1280px) / 2000))",
                 transformOrigin: "center",
               }}
             >
-              <h2 className="text-[2.5vw] font-bold self-start mb-[3vw]">
+              <h2 className="text-[2.5vw] font-bold self-start">
                 Get in Touch
               </h2>
               <ContactForm />
-              <div className="mt-[3vw] flex flex-col items-center space-y-[2vw]">
+              <div className="flex flex-col items-center space-y-[2vw]">
                 <div className="flex gap-[2vw]">
                   <Link
                     href="https://github.com/x1yl"
